@@ -1,0 +1,13 @@
+langchain-google-genai
+llama-index
+docling
+pypdf
+crawl4ai
+astrapy
+qdrant-client
+graphiti-core
+mem0
+fastapi
+uvicorn
+pydantic
+pytest 
