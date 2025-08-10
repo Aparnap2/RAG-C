@@ -1,0 +1,70 @@
+site_name: RAG-C Documentation
+site_description: MCP-First, Type-C RAG Platform
+site_url: https://RAG-C.readthedocs.io
+repo_url: https://github.com/yourusername/RAG-C
+repo_name: yourusername/RAG-C
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - Configuration: getting-started/configuration.md
+  - Components:
+    - Vector Stores: components/vector-stores.md
+    - Text Indexes: components/text-indexes.md
+    - Hybrid Retrieval: components/hybrid-retrieval.md
+    - MCP Integration: components/mcp.md
+  - API Reference:
+    - Core: api/core.md
+    - Pipeline: api/pipeline.md
+    - Factory: api/factory.md
+  - Examples:
+    - Basic Usage: examples/basic.md
+    - Advanced: examples/advanced.md
+  - Deployment: deployment.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            docstring_style: google
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html

@@ -4,18 +4,19 @@ from langchain.vectorstores import AstraDB, Qdrant
 from rag.models import Document
 import os
 from uuid import uuid4
-from typing import List
+from typing import List, Dict, Any
 
 class VectorStore(VectorStoreBase):
-    def __init__(self, provider: str = "astradb"):
+    def __init__(self, provider: str, config: Dict[str, Any]):
         self.embedding_model = GoogleGenerativeAIEmbeddings(
-            model="models/embedding-001",
+            model=config.get("embedding_model", "models/embedding-001"),
             google_api_key=os.getenv("GOOGLE_API_KEY")
         )
         self.provider = provider
+        collection_name = config.get("collection_name", "rag_collection")
         if provider == "astradb":
             self.store = AstraDB(
-                collection_name="rag_collection",
+                collection_name=collection_name,
                 embedding=self.embedding_model,
                 api_endpoint=os.getenv("ASTRA_DB_API_ENDPOINT"),
                 token=os.getenv("ASTRA_DB_APPLICATION_TOKEN")
@@ -26,7 +27,7 @@ class VectorStore(VectorStoreBase):
                 embedding=self.embedding_model,
                 url=os.getenv("QDRANT_URL"),
                 api_key=os.getenv("QDRANT_API_KEY"),
-                collection_name="rag_collection"
+                collection_name=collection_name
             )
 
     async def add_documents(self, documents: List[Document]):

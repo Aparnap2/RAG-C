@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from rag.models import Document, RAGQuery
-from typing import List, Dict, Any
+from .models import Document, RAGQuery
+from typing import List, Dict, Any, Optional
 
 class IngestionBase(ABC):
     @abstractmethod
@@ -23,6 +23,16 @@ class MemoryBase(ABC):
     async def add_context(self, query: RAGQuery, response: str): ...
     @abstractmethod
     async def get_context(self, query: str) -> str: ...
+
+class TextIndexBase(ABC):
+    @abstractmethod
+    async def add_documents(self, documents: List[Document]) -> None: ...
+    @abstractmethod
+    async def search(self, query: str, k: int = 10, filters: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any]]: ...
+    @abstractmethod
+    async def delete_documents(self, doc_ids: List[str]) -> None: ...
+    @abstractmethod
+    async def health_check(self) -> bool: ...
 
 class LLMBase(ABC):
     @abstractmethod
