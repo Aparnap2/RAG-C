@@ -10,16 +10,13 @@ from fastapi import FastAPI, UploadFile, File, Header, HTTPException, Response, 
 from fastapi.middleware.cors import CORSMiddleware
 from sse_starlette.sse import EventSourceResponse
 
-from rag.config import RAGConfig
-from rag.models import RAGQuery, RAGResponse, Document, SourceEvent, HybridQuery
-from rag.mcp.host import MCPHost
-from rag.ingestion_stream import MCPIngestionWorker, InMemoryQueueClient
-from rag.normalizer import Normalizer
-from rag.graph_sink import GraphSink
-from rag.text_sink import TextSink, Chunker, Embedder
-from rag.retrieval_hybrid import HybridRetriever
-from rag.reranker import CrossEncoderReranker
-from rag.grounding import GroundedGenerator
+from uni_rag.config import RAGConfig
+from uni_rag.models import RAGQuery, RAGResponse, Document, SourceEvent, HybridQuery
+from uni_rag.mcp.host import MCPHost
+from uni_rag.retrieval_hybrid import HybridRetriever
+from uni_rag.reranker import CrossEncoderReranker
+from uni_rag.grounding import GroundedGenerator
+from uni_rag.enhanced_text_sink import EnhancedTextSink
 from api.observability import RAGObservability
 
 app = FastAPI(title="MCP-First, Type-C RAG Platform")

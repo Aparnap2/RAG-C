@@ -17,6 +17,8 @@ from .factory import (
     get_llm,
     get_embedding_client
 )
+from .llm_orchestrator import LLMOrchestrator
+from .unified_ingestion import UnifiedIngestion
 
 __all__ = [
     "RAGConfig",
@@ -29,4 +31,6 @@ __all__ = [
     "get_memory", 
     "get_llm",
     "get_embedding_client",
+    "LLMOrchestrator",
+    "UnifiedIngestion",
 ]

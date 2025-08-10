@@ -39,6 +39,9 @@ opensearch = ["opensearch-py>=2.3.0"]
 elasticsearch = ["elasticsearch>=8.0.0"]
 redis = ["redis>=4.5.0"]
 embeddings = ["google-generativeai>=0.3.0"]
+langgraph = ["langgraph>=0.0.40", "langchain>=0.1.0", "langchain-community>=0.0.20"]
+llamaindex = ["llamaindex>=0.10.0", "llamaindex-readers-file>=0.1.0"]
+processing = ["docling>=1.0.0", "unstructured>=0.10.0", "beautifulsoup4>=4.12.0", "requests>=2.31.0"]
 all = [
     "astrapy>=0.7.0",
     "qdrant-client>=1.6.0", 
@@ -47,6 +50,15 @@ all = [
     "elasticsearch>=8.0.0",
     "redis>=4.5.0",
     "google-generativeai>=0.3.0",
+    "langgraph>=0.0.40",
+    "langchain>=0.1.0",
+    "langchain-community>=0.0.20",
+    "llamaindex>=0.10.0",
+    "llamaindex-readers-file>=0.1.0",
+    "docling>=1.0.0",
+    "unstructured>=0.10.0",
+    "beautifulsoup4>=4.12.0",
+    "requests>=2.31.0",
 ]
 
 [project.urls]

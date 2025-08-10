@@ -64,7 +64,7 @@ dev-setup: install-dev
 
 # Docker
 docker-build:
-	docker build -t uni-rag:latest .
+	docker build -t RAG-C:latest .
 
 docker-run:
-	docker run -p 8000:8000 uni-rag:latest
+	docker run -p 8000:8000 RAG-C:latest

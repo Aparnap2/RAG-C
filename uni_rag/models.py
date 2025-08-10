@@ -2,10 +2,17 @@ from pydantic import BaseModel, Field
 from typing import List, Optional, Dict, Any, Union
 
 class Document(BaseModel):
-    """Legacy document model for backward compatibility"""
+    """Document model with enhanced fields"""
     id: str
     content: str
-    metadata: dict = {}
+    metadata: Dict[str, Any] = {}
+    tenant_id: Optional[str] = None
+    source_tool: Optional[str] = None
+    source_id: Optional[str] = None
+    ts_source: Optional[str] = None
+    ts_ingested: Optional[str] = None
+    acl: List[str] = []
+    checksum: Optional[str] = None
 
 class RAGQuery(BaseModel):
     """Legacy query model for backward compatibility"""
@@ -101,4 +108,28 @@ class GraphEdge(BaseModel):
     t_valid_end: str
     confidence: float
     tenant_id: str
-    provenance: Dict[str, Any] 
+    provenance: Dict[str, Any]
+
+class EnhancedChunk(BaseModel):
+    """Enhanced chunk with multiple representations and metadata."""
+    chunk_id: str
+    doc_id: str
+    text: str
+    hypothetical_questions: List[str] = []
+    chunk_sizes: Dict[int, str] = {}  # {200: "short_version", 400: "medium_version"}
+    metadata_tags: Dict[str, Any] = {}  # product_ID, category, country, etc.
+    quality_score: float = 0.5
+    embedding_variants: Dict[str, List[float]] = {}  # {task_type: embedding}
+    tenant_id: Optional[str] = None
+    source_tool: Optional[str] = None
+    ts_source: Optional[str] = None
+    acl: List[str] = []
+
+class RerankResult(BaseModel):
+    """Reranking result with explanation."""
+    chunk_id: str
+    relevance_score: float
+    recency_score: float
+    authority_score: float
+    combined_score: float
+    explanation: Optional[str] = None 

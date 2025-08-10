@@ -1,7 +1,7 @@
 """Basic usage example for RAG-C."""
 
 import asyncio
-from RAG-C import RAGPipeline, RAGConfig, RAGQuery, Document
+from uni_rag import RAGPipeline, RAGConfig, RAGQuery, Document
 
 async def main():
     config = RAGConfig(
